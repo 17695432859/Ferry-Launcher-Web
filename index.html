@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Ferry Launcher —— 一个轻量、快速、好看的 Minecraft Java 版启动器。单个 exe，不用装运行库，双击就跑。" />
+  <meta name="theme-color" content="#0b0d14" />
+  <title>Ferry Launcher · 轻装上阵,即刻启程</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop stop-color='%237c9cff'/%3E%3Cstop offset='1' stop-color='%233b4ce0'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect x='1' y='1' width='30' height='30' rx='9' fill='url(%23g)'/%3E%3Cpath d='M6.4 18.6h19.2l-2.7 5.2a1.2 1.2 0 0 1-1.1.7H10.2a1.2 1.2 0 0 1-1.1-.7l-2.7-5.2Z' fill='%23fff'/%3E%3Cpath d='M12 18.6v-4.4a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v4.4' fill='%23fff' fill-opacity='.9'/%3E%3Cpath d='M16 7.4v6.2M16 7.4h3.6' stroke='%23fff' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="./styles.css" />
+  <noscript><style>.reveal{opacity:1 !important;transform:none !important}</style></noscript>
+</head>
+<body>
+  <!-- 背景层 -->
+  <div class="bg-layer" aria-hidden="true">
+    <div class="bg-city"></div>
+    <div class="bg-glow bg-glow--one"></div>
+    <div class="bg-glow bg-glow--two"></div>
+    <div class="bg-grid"></div>
+    <div class="bg-noise"></div>
+  </div>
+
+  <!-- 导航 -->
+  <header class="nav" id="nav">
+    <div class="nav__inner container">
+      <div class="nav__left">
+        <a class="brand" href="#top" aria-label="Ferry Launcher 首页">
+          <span class="brand__mark">
+            <svg viewBox="0 0 32 32" aria-hidden="true">
+              <defs><linearGradient id="fmark" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#7c9cff"/><stop offset="1" stop-color="#3b4ce0"/></linearGradient></defs>
+              <rect x="1" y="1" width="30" height="30" rx="9" fill="url(#fmark)"/>
+              <path d="M6.4 18.6h19.2l-2.7 5.2a1.2 1.2 0 0 1-1.1.7H10.2a1.2 1.2 0 0 1-1.1-.7l-2.7-5.2Z" fill="#fff"/>
+              <path d="M12 18.6v-4.4a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v4.4" fill="#fff" fill-opacity=".9"/>
+              <path d="M16 7.4v6.2M16 7.4h3.6" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+          </span>
+          <span class="brand__text">Ferry <b>Launcher</b></span>
+        </a>
+
+        <nav class="nav__links" id="navLinks" aria-label="主导航">
+          <a href="#features">功能</a>
+          <a href="#showcase">界面</a>
+          <a href="#tech">技术</a>
+          <a href="#download">下载</a>
+        </nav>
+      </div>
+
+      <!-- 灵动岛 -->
+      <button class="island" id="island" aria-expanded="false" aria-label="查看运行状态">
+        <span class="island__compact">
+          <i class="island__dot"></i>
+          <span class="island__ver">v0.1.2</span>
+        </span>
+        <span class="island__expanded">
+          <span class="island__row">
+            <i class="island__dot"></i>
+            <b>Ferry Launcher 0.1.2</b>
+            <span class="island__ready">已就绪</span>
+          </span>
+          <span class="island__desc">8.8 MB 单文件 · Windows x64 · 5 类资源 · MIT 开源</span>
+        </span>
+      </button>
+
+      <div class="nav__actions">
+        <a class="btn btn--ghost btn--sm" href="https://github.com/17695432859/Ferry-Launcher" target="_blank" rel="noopener">
+          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.09.68-.22.68-.49v-1.7c-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.9 1.57 2.35 1.12 2.92.85.09-.66.35-1.12.64-1.38-2.22-.26-4.55-1.14-4.55-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05A9.3 9.3 0 0 1 12 6.99c.85 0 1.71.12 2.51.35 1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.8-4.57 5.05.36.32.68.94.68 1.9v2.82c0 .27.18.58.69.48A10.26 10.26 0 0 0 22 12.25C22 6.58 17.52 2 12 2Z"/></svg>
+          <span class="hide-sm">GitHub</span>
+        </a>
+        <a class="btn btn--primary btn--sm" href="#download">下载</a>
+        <button class="nav__toggle" id="navToggle" aria-label="展开菜单" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container hero__inner">
+        <div class="hero__copy">
+          <div class="eyebrow reveal">
+            <span class="eyebrow__dot"></span>
+            Minecraft Java 版启动器 · Windows x64
+          </div>
+          <h1 class="hero__title reveal" style="--d:.06s">
+            轻装上阵,<br />
+            <span class="grad-text">即刻启程。</span>
+          </h1>
+          <p class="hero__desc reveal" style="--d:.12s">
+            单个 exe,不用装运行库,双击就跑。<br class="hide-sm" />
+            把版本、资源、模组、账户和联机都交给它,你只管玩游戏。
+          </p>
+          <div class="hero__cta reveal" style="--d:.18s">
+            <a class="btn btn--primary btn--lg" href="#download">
+              <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 19h14"/></svg>
+              下载 Windows 版
+            </a>
+            <a class="btn btn--glass btn--lg" href="#showcase">看看界面</a>
+          </div>
+          <div class="hero__meta reveal" style="--d:.24s">
+            <span><b>8.8 MB</b> 单文件</span>
+            <span class="dot">·</span>
+            <span><b>免运行库</b></span>
+            <span class="dot">·</span>
+            <span><b>开源</b> MIT</span>
+          </div>
+        </div>
+
+        <div class="hero__visual reveal" style="--d:.14s">
+          <div class="window-float">
+            <div class="window">
+              <div class="window__bar">
+                <span class="window__lights"><i></i><i></i><i></i></span>
+                <span class="window__title">Ferry Launcher</span>
+                <span class="window__spacer"></span>
+              </div>
+              <div class="window__body">
+                <img src="./assets/home.png" alt="Ferry Launcher 主界面,展示实例列表与版本详情" loading="eager" />
+              </div>
+            </div>
+            <div class="float-badge float-badge--a">
+              <span class="fb__icon">⚡</span>
+              <span><b>秒级启动</b><small>JVM 参数自动拼装</small></span>
+            </div>
+            <div class="float-badge float-badge--b">
+              <span class="fb__icon fb__icon--green">✓</span>
+              <span><b>SHA1 校验</b><small>下载完整可靠</small></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container stats reveal" style="--d:.3s">
+        <div class="stat"><b>8.8<small> MB</small></b><span>单个 exe 体积</span></div>
+        <div class="stat"><b>5<small> 类</small></b><span>资源下载支持</span></div>
+        <div class="stat"><b>5<small> 种</small></b><span>加载器支持</span></div>
+        <div class="stat"><b>0<small> 依赖</small></b><span>免装运行库</span></div>
+      </div>
+    </section>
+
+    <!-- 功能 -->
+    <section class="section" id="features">
+      <div class="container">
+        <div class="section__head reveal">
+          <span class="kicker">为什么选 Ferry</span>
+          <h2 class="section__title">该有的都有,<br class="hide-sm" />不该有的一个不多。</h2>
+          <p class="section__sub">从导入老存档到联机开服,一条链路打通。</p>
+        </div>
+
+        <div class="features">
+          <article class="feature reveal" style="--d:.04s">
+            <div class="feature__icon feature__icon--blue">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7Z"/></svg>
+            </div>
+            <h3>导入已有游戏</h3>
+            <p>选一个 <code>.minecraft</code> 目录,里面所有版本一次性加进来。PCL / HMCL 那种版本隔离布局也能认出来。</p>
+          </article>
+
+          <article class="feature reveal" style="--d:.08s">
+            <div class="feature__icon feature__icon--purple">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v3m0 12v3M3 12h3m12 0h3M5.6 5.6l2.1 2.1m8.6 8.6 2.1 2.1m0-12.8-2.1 2.1M7.7 16.3l-2.1 2.1"/><circle cx="12" cy="12" r="4"/></svg>
+            </div>
+            <h3>装版本,一键搞定</h3>
+            <p>原版、Fabric、Forge、NeoForge、Quilt 全支持。官方源与 BMCLAPI 镜像自动切换,镜像抽风自动回退。</p>
+          </article>
+
+          <article class="feature reveal" style="--d:.12s">
+            <div class="feature__icon feature__icon--teal">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>
+            </div>
+            <h3>账户与皮肤</h3>
+            <p>LittleSkin 外置登录、微软登录、离线账户。多角色切换,令牌静默刷新,还有 3D 皮肤预览。</p>
+          </article>
+
+          <article class="feature reveal" style="--d:.16s">
+            <div class="feature__icon feature__icon--amber">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 3 7.5 12 12l9-4.5L12 3Z"/><path d="m3 12 9 4.5 9-4.5M3 16.5 12 21l9-4.5"/></svg>
+            </div>
+            <h3>内容管理</h3>
+            <p>按实例看 mod、存档、日志、资源包。预览、启停、删除、导入、查更新,mod 元数据直接从 jar 里读。</p>
+          </article>
+
+          <article class="feature reveal" style="--d:.2s">
+            <div class="feature__icon feature__icon--pink">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 12a4 4 0 1 1 0-8 4 4 0 0 1 0 8Zm8 0a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM2 20a6 6 0 0 1 12 0m0 0a6 6 0 0 1 8-5.6"/></svg>
+            </div>
+            <h3>联机,不折腾</h3>
+            <p>陶瓦联机与 EasyTier 直连,房间码生成与解析。不用公网 IP,运行时还能在应用内一键下载安装。</p>
+          </article>
+
+          <article class="feature reveal" style="--d:.24s">
+            <div class="feature__icon feature__icon--indigo">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 9h3m-3 4h7m-7 4h4m4-4 2 2 3-4"/></svg>
+            </div>
+            <h3>Java 不用你操心</h3>
+            <p>多线程扫描本机 Java,含 PCL 自带的 JRE。1.21+ 缺 Java 21 时可一键从清华镜像下载,启动前自动校验版本。</p>
+          </article>
+
+          <article class="feature feature--accent reveal" style="--d:.28s">
+            <div class="feature__icon feature__icon--cyan">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
+            </div>
+            <h3>五类资源,一站下载 <span class="tag-new">新</span></h3>
+            <p>Mod、整合包、数据包、资源包、光影包,可按名称、来源、版本、加载器、分类筛选,结果分页浏览。选中后指定实例一键安装并实时显示进度。</p>
+          </article>
+
+          <article class="feature feature--accent reveal" style="--d:.32s">
+            <div class="feature__icon feature__icon--red">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 9v5m0 3h.01"/><path d="M10.3 4.2 2.5 18a2 2 0 0 0 1.7 3h15.6a2 2 0 0 0 1.7-3L13.7 4.2a2 2 0 0 0-3.4 0Z"/></svg>
+            </div>
+            <h3>崩溃自动分析 <span class="tag-new">新</span></h3>
+            <p>游戏异常退出时自动读日志与 <code>crash-reports</code>,匹配 Java 版本、内存不足、缺前置、Mod 冲突、显卡驱动等十余种常见问题,直接给出原因和修复建议。</p>
+          </article>
+
+          <article class="feature reveal" style="--d:.36s">
+            <div class="feature__icon feature__icon--green">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 4 6v6c0 4.5 3.4 8.3 8 9 4.6-.7 8-4.5 8-9V6l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg>
+            </div>
+            <h3>稳定,有兜底</h3>
+            <p>后端单条命令出错只让那次调用失败,不会带走整个进程;互斥锁能从毒锁恢复;渲染层有错误边界,组件报错不会白屏。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 界面展示 -->
+    <section class="section section--showcase" id="showcase">
+      <div class="container">
+        <div class="section__head section__head--center reveal">
+          <span class="kicker">界面展示</span>
+          <h2 class="section__title">每一屏,都为你想好了。</h2>
+          <p class="section__sub">点选标签,看看不同页面的样子。</p>
+        </div>
+
+        <div class="tabs reveal" role="tablist" aria-label="界面预览">
+          <button class="tab is-active" role="tab" aria-selected="true" data-target="home">启动</button>
+          <button class="tab" role="tab" aria-selected="false" data-target="accounts">账户</button>
+          <button class="tab" role="tab" aria-selected="false" data-target="download">下载</button>
+          <button class="tab" role="tab" aria-selected="false" data-target="multiplayer">联机</button>
+          <button class="tab" role="tab" aria-selected="false" data-target="settings">设置</button>
+        </div>
+
+        <div class="showcase-stage reveal" style="--d:.08s">
+          <div class="showcase-frame">
+            <div class="showcase-frame__bar">
+              <span class="window__lights"><i></i><i></i><i></i></span>
+              <span class="showcase-frame__title" id="showcaseTitle">启动 · 实例管理</span>
+            </div>
+            <div class="showcase-frame__viewport" id="showcaseViewport">
+              <img class="shot is-active" data-shot="home" src="./assets/home.png" alt="启动页与实例管理" />
+              <img class="shot" data-shot="accounts" src="./assets/accounts.png" alt="账户与角色管理" loading="lazy" />
+              <img class="shot" data-shot="download" src="./assets/download.png" alt="版本下载页面" loading="lazy" />
+              <img class="shot" data-shot="multiplayer" src="./assets/multiplayer.png" alt="联机房间页面" loading="lazy" />
+              <img class="shot" data-shot="settings" src="./assets/settings.png" alt="外观与设置页面" loading="lazy" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 技术栈 -->
+    <section class="section" id="tech">
+      <div class="container tech">
+        <div class="tech__copy reveal">
+          <span class="kicker">技术栈</span>
+          <h2 class="section__title">小巧,但不妥协。</h2>
+          <p class="tech__lead">Tauri 2 壳 + Rust 后端,渲染层碰不到 Node 和文件系统。命令白名单 IPC、严格 CSP,该有的安全一个不少。</p>
+          <ul class="tech__list">
+            <li><span>壳</span> Tauri 2 + WebView2,无边框窗口,单文件 MSVC 静态链接</li>
+            <li><span>界面</span> React 18 + TypeScript + Tailwind + Framer Motion + Zustand</li>
+            <li><span>后端</span> Rust,命令白名单 IPC,原子写 + 备份回退</li>
+            <li><span>细节</span> 毛玻璃面板、主题深浅、强调色、中英双语</li>
+          </ul>
+        </div>
+        <div class="tech__card reveal" style="--d:.1s">
+          <div class="code-card">
+            <div class="code-card__head"><span></span><span></span><span></span><b>ferry-launcher</b></div>
+            <pre><code><span class="c-dim"># 数据目录</span>
+<span class="c-key">%APPDATA%</span>\ferry-launcher
+  ├─ instances   <span class="c-dim"># 实例</span>
+  ├─ accounts    <span class="c-dim"># 账户</span>
+  └─ settings    <span class="c-dim"># 设置</span>
+
+<span class="c-dim"># 单文件静态链接</span>
+<span class="c-fn">FerryLauncher</span>-0.1.2.exe
+  <span class="c-str">≈ 8.8 MB · 免 VC 运行库</span></code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 下载 -->
+    <section class="section section--download" id="download">
+      <div class="container">
+        <div class="download-card reveal">
+          <div class="download-card__glow"></div>
+          <div class="download-card__inner">
+            <span class="kicker kicker--light">开始使用</span>
+            <h2>准备好启程了吗?</h2>
+            <p>下载即可运行,无需安装、无需运行库。当前版本 v0.1.2,支持 Windows x64。</p>
+            <div class="download-card__actions">
+              <a class="btn btn--light btn--lg" href="https://github.com/17695432859/Ferry-Launcher/releases" target="_blank" rel="noopener">
+                <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 19h14"/></svg>
+                前往 GitHub 下载
+              </a>
+              <a class="btn btn--outline-light btn--lg" href="https://github.com/17695432859/Ferry-Launcher" target="_blank" rel="noopener">查看源码</a>
+            </div>
+            <p class="download-card__note">WebView2 需系统自带或安装 Evergreen Runtime</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 页脚 -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <span class="brand__mark brand__mark--sm">
+          <svg viewBox="0 0 32 32" aria-hidden="true">
+            <defs><linearGradient id="fmark2" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#7c9cff"/><stop offset="1" stop-color="#3b4ce0"/></linearGradient></defs>
+            <rect x="1" y="1" width="30" height="30" rx="9" fill="url(#fmark2)"/>
+            <path d="M6.4 18.6h19.2l-2.7 5.2a1.2 1.2 0 0 1-1.1.7H10.2a1.2 1.2 0 0 1-1.1-.7l-2.7-5.2Z" fill="#fff"/>
+            <path d="M12 18.6v-4.4a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v4.4" fill="#fff" fill-opacity=".9"/>
+            <path d="M16 7.4v6.2M16 7.4h3.6" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <span>Ferry Launcher</span>
+      </div>
+      <p class="footer__note">一个给 Minecraft Java 版用的轻量启动器。MIT 开源。</p>
+      <a class="footer__link" href="https://github.com/17695432859/Ferry-Launcher" target="_blank" rel="noopener">GitHub ↗</a>
+    </div>
+  </footer>
+
+  <script src="./script.js"></script>
+</body>
+</html>

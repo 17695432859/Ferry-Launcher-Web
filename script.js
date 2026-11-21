@@ -80,7 +80,7 @@ const titles = {
   accounts: '账户 · 角色与皮肤',
   download: '下载 · 版本与资源',
   multiplayer: '联机 · 房间直连',
-  settings: '设置 · 外观偏好',
+  settings: '设置 · Java 来源与外观',
 };
 
 tabs.forEach((tab) => {
